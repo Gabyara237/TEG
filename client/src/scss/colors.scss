@@ -1,0 +1,48 @@
+$primary: rgba(239, 239, 239, 0.92);
+$primary-hover: rgb(111, 111, 111);
+
+//Text
+$text-light: black;
+
+
+//Background
+$background-dark: rgb(22, 5, 5);
+$background-grey: rgb(69, 69, 69);
+$background-dark-web: black;
+
+//Border
+
+$border-grey: black;
+
+//Status
+$success:rgb(12, 255, 12);
+$error: rgb(255, 0, 0);
+
+//Social Color
+$youtube: #cd201f;
+$twitter:#1da1f2;
+$facebook: #3b5998;
+$linkedin: #0077b5;
+
+
+.MuiMenuItem-root:hover {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    background-color: #e6f7ff !important;
+    color: #1890ff;
+
+}
+
+.css-2s90m6-MuiAvatar-root:hover{
+    background-color: #1890ff;   
+}
+
+
+.css-mo45bb-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper .MuiAvatar-root {
+    width: 19px !important;
+    height: 19px !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root{
+    font-family: inherit;
+}

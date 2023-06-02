@@ -1,0 +1,102 @@
+@import "~/src/scss/index.scss";
+
+$widthLeftMenu: 200px;
+
+.admin-layout{
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+    
+
+    &__left{
+        .logo{
+            height: 30px;
+            width: 100%;
+           
+            border-bottom: 0.1rem solid #c4cad4;
+            height:50px;
+        }
+        
+    }
+
+    &__right{
+        width: 100%;
+        &-header{
+            background-color: rgb(255, 255, 255);
+            border-bottom: 0.1rem solid #c4cad4;
+            height:50px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 10px;
+
+        }
+
+
+
+        &-content{
+            position: relative;
+            padding: 20px;
+        }
+    }
+    
+}
+
+.menu2{
+    border-left: 0.1rem solid #c4cad4;
+    display: contents;
+}
+
+//NOTIFICATIONS
+.icons{
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 5px;
+}
+// Notification counter
+.counter{
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+    padding: 7px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+.money{
+    width: 24px !important;
+    height: 24px !important;
+   
+}
+
+.wallet{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1%;
+    padding-right: 1%;
+    border-right: 0.1rem solid #c4cad4;
+
+}
+
+.notifications{
+    width: 40px !important;
+    height: 40px !important;
+    padding: 8px;
+    
+}
+
+
+.notifications:hover{
+    background-color: #e6f7ff;
+    border-radius: 50%;
+}

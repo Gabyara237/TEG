@@ -1,0 +1,124 @@
+@mixin table{
+    @media screen and (max-width:720px){
+        @content;
+    }
+}
+
+@mixin mobile{
+    @media screen and (max-width:576px){
+        @content;
+    }
+}
+
+.containerEngineerDetail{
+    border-radius: 10px;
+    padding: 3%;
+    -webkit-box-shadow: 0px 0px 8px -1px #bebebe; 
+    box-shadow: 0px 0px 8px -1px #bebebe;
+    display: flex;
+    margin-bottom: 20px;
+    @include table{
+        display: grid;
+    }
+
+    .engineer{
+        flex: 2;
+
+        .enginnerInformation{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .details{
+            display: flex;
+            margin-bottom: 15px;   
+            @include table{
+                display: grid;
+            }
+        
+        }
+        .engineerReview{
+            width: 50%;
+            @include table{
+                width: 100%;
+            }
+        }
+    }
+    .ticketAssign{
+        flex: 1;
+        float: right;
+        text-align: right;
+        align-self: end;
+        @include table{
+            text-align: left;
+        }
+    }
+
+}
+
+.containerEnginnerSkills{
+    border-radius: 10px;
+    padding: 3%;
+    -webkit-box-shadow: 0px 0px 8px -1px #bebebe; 
+    box-shadow: 0px 0px 8px -1px #bebebe;
+    margin-bottom: 20px;
+}
+
+.containerEngineersDocument{
+    border-radius: 10px;
+    padding: 3%;
+    -webkit-box-shadow: 0px 0px 8px -1px #bebebe; 
+    box-shadow: 0px 0px 8px -1px #bebebe;
+    margin-bottom: 20px;
+}
+
+.containerTicketTable{
+    border-radius: 10px;
+    padding: 3%;
+    -webkit-box-shadow: 0px 0px 8px -1px #bebebe; 
+    box-shadow: 0px 0px 8px -1px #bebebe;
+    margin-bottom: 20px;
+}
+
+
+
+.accountDetails{
+    margin-right: 5%;
+}
+
+
+
+.numReviews{
+   color:  #848689;
+}
+.engineerReview{
+    width: 50%;
+}
+
+.areaIcon{
+    margin-right: 10px;
+}
+
+.area{
+ margin-bottom: 20px;
+}
+
+
+.avatarViewEnginner{
+    width: 55px !important;
+    height: 55px !important;
+}
+
+
+.ContactDetails{
+    margin-right: 5%;
+}
+
+.availability{
+    display: flex;
+}
+
+.availabilityIcon{
+width: 15px !important;
+margin-right:2% ;
+}

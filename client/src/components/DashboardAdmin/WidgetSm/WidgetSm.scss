@@ -1,0 +1,68 @@
+.widgetSm{
+    flex:1;
+    -webkit-box-shadow: 0px 0px 8px -1px #bebebe; 
+    box-shadow: 0px 0px 8px -1px #bebebe;
+    padding: 2%;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.widgetSmTitle{
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.widgetSmList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.widgetSmListItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: 2%;
+}
+
+.widgetSmTicket{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.widgetSmCustomer{
+    font-weight: 600;
+}
+
+.widgetSmStatus{
+    font-weight: 300;
+}
+
+.widgetSmButton{
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 5px;
+    background-color: #eeeef7;
+    color: #555;
+    cursor: pointer;
+}
+
+.widgetSmIcon{
+    font-size: 16px !important;
+    margin-right: 5px;
+}
+
+.seeMore{
+    float: right;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.seeMore:hover{
+    color: #1890ff;
+}

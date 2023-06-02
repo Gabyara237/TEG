@@ -1,0 +1,34 @@
+.userListUser{
+    display: flex;
+    align-items: center;
+}
+
+.userListAvatar{
+    width: 30px !important;
+    height: 30px !important;
+    margin-right: 5px;
+}
+
+.userListEdit{
+    cursor: pointer;
+    width: 20px !important;
+    margin-right: 4px;
+}
+
+.userListDelet{
+    cursor: pointer;
+    width: 20px !important;   
+}
+
+.userListView{
+    cursor:pointer;
+    width: 20px !important;
+}
+
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-columnHeader:focus, .css-1e2bxag-MuiDataGrid-root .MuiDataGrid-cell:focus {
+    outline: none !important;
+}
+
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within, .css-1e2bxag-MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+    outline: none !important;
+}
