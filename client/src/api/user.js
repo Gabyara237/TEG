@@ -22,6 +22,27 @@ export class User {
     }
   }
 
+  async getUser(accessToken, idUser) {
+    try {
+      const url = `${this.baseApi}/${ENV.API_ROUTES.ENGINEER}/${idUser}`;
+      console.log(url);
+      const params = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+      const response = await fetch(url, params);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createUser(accessToken, data) {
     try {
       const formData = new FormData();

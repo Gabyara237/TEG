@@ -27,6 +27,7 @@ export function FormCreateEngineer(props) {
 
   const onFinish = (values) => {
     userController.createUser(accessToken, values.user);
+
     onReload();
     close();
   };

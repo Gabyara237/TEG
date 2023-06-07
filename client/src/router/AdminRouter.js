@@ -44,13 +44,13 @@ export function AdminRouter() {
         </>
       ) : (
         <>
-          {/* {["/admin", "/admin/dashboard"].map((path) => (
+          {["/admin", "/admin/dashboard"].map((path) => (
             <Route
               key={path}
               path={path}
               element={loadLayout(AdminLayout, Dashboard)}
             />
-         ))} 
+          ))}
 
           <Route
             path="/admin/engineers"
@@ -89,7 +89,7 @@ export function AdminRouter() {
             element={loadLayout(AdminLayout, Reports)}
           />
           <Route path="/admin/blog" element={loadLayout(AdminLayout, Blog)} />
-         */}
+
           <Route path="/admin">
             <Route index element={loadLayout(AdminLayout, Dashboard)} />
             <Route

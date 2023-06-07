@@ -11,7 +11,6 @@ export function EngineersList(props) {
   const { reload } = props;
   const [users, setUsers] = useState(null);
   const { accessToken } = useAuth();
-  console.log(users);
 
   useEffect(() => {
     (async () => {

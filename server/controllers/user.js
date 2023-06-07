@@ -14,6 +14,19 @@ async function getMe(req, res) {
   }
 }
 
+async function getUser(req, res) {
+  const { id } = req.params;
+  console.log(req);
+  const response = await User.findById(id);
+  console.log(response);
+
+  if (!response) {
+    res.status(400).send({ msg: "No se ha encontrado usuario" });
+  } else {
+    res.status(200).send(response);
+  }
+}
+
 // Muestra todos los usuarios del sistema, y tambien los usuarios activos o no activos
 async function getUsers(req, res) {
   const { active } = req.query;
@@ -91,6 +104,7 @@ function deleteUser(req, res) {
 
 module.exports = {
   getMe,
+  getUser,
   getUsers,
   createUser,
   updateUser,
