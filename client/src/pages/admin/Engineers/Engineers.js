@@ -8,7 +8,10 @@ import "./Engineers.scss";
 
 export function Engineers() {
   const [showModal, setShowModal] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const onOpenCloseModal = () => setShowModal((prevState) => !prevState);
+  const onReload = () => setReload((prevState) => !prevState);
 
   return (
     <div>
@@ -26,14 +29,14 @@ export function Engineers() {
         close={onOpenCloseModal}
         title="Create new engineer"
       >
-        <FormCreateEngineer close={onOpenCloseModal} />
+        <FormCreateEngineer close={onOpenCloseModal} onReload={onReload} />
       </BasicModal>
       <FeaturedInfo />
       <div>
         <h3 className="summaryCountriesTitle"> New engineers </h3>
       </div>
 
-      <EngineersList />
+      <EngineersList reload={reload} />
     </div>
   );
 }

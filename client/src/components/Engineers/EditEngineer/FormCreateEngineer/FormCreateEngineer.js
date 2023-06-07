@@ -8,7 +8,7 @@ const userController = new User();
 
 export function FormCreateEngineer(props) {
   const { accessToken } = useAuth();
-  const { close } = props;
+  const { close, onReload } = props;
 
   const layout = {
     labelCol: {},
@@ -27,7 +27,8 @@ export function FormCreateEngineer(props) {
 
   const onFinish = (values) => {
     userController.createUser(accessToken, values.user);
-    //close()
+    onReload();
+    close();
   };
   return (
     <Form
