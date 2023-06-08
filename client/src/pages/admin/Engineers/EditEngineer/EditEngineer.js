@@ -23,14 +23,12 @@ export function EditEngineer() {
   const { accessToken } = useAuth();
   const url = window.location.pathname;
   const idUser = url.substring(22);
-  console.log(idUser);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await userController.getUser(accessToken, idUser);
         setUser(response);
-        console.log(response.lastname);
       } catch (error) {
         console.error(error);
       }
@@ -118,7 +116,7 @@ export function EditEngineer() {
             <EditIcon className="userShowIcon" />
             Edit
           </span>
-          <FormEditEnginner className="updateForm" />
+          <FormEditEnginner className="updateForm" user={user} />
         </div>
       </div>
     </div>

@@ -16,9 +16,8 @@ async function getMe(req, res) {
 
 async function getUser(req, res) {
   const { id } = req.params;
-  console.log(req);
+
   const response = await User.findById(id);
-  console.log(response);
 
   if (!response) {
     res.status(400).send({ msg: "No se ha encontrado usuario" });
@@ -85,6 +84,7 @@ function updateUser(req, res) {
   User.findByIdAndUpdate({ _id: id }, userData, (error) => {
     if (error) {
       res.status(400).send({ msg: "Error al actualizar el usuario" });
+      console.log(error);
     } else {
       res.status(200).send({ msg: "Actualización correcta" });
     }

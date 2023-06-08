@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
 import "./FormEditEnginner.scss";
 import { FileUpdate } from "../FileUpdate";
 import { AvatarUpdate } from "../AvatarUpdate";
+import { User } from "../../../../api";
+import { useAuth } from "../../../../hooks";
 
-export default function FormEditEnginner() {
+const userController = new User();
+
+export default function FormEditEnginner(props) {
+  const { accessToken } = useAuth();
+  const { user } = props;
+  const [reload, setReload] = useState(false);
+
+  const onReload = () => setReload((prevState) => !prevState);
+
   const layout = {
     labelCol: {
       span: 4,
@@ -33,7 +43,8 @@ export default function FormEditEnginner() {
   /* eslint-enable no-template-curly-in-string */
 
   const onFinish = (values) => {
-    console.log(values);
+    userController.updateUser(accessToken, user._id, values.user);
+    onReload();
   };
   return (
     <Form
@@ -42,20 +53,29 @@ export default function FormEditEnginner() {
       className="formUpdateEnginner"
       layout="horizontal"
       onFinish={onFinish}
+      initialValues={{
+        user: user.username,
+        phone: user.phonenumber,
+      }}
       style={{
         maxWidth: 600,
       }}
       validateMessages={validateMessages}
     >
-      <Form.Item name={["user", "Avatar"]} label="Avatar" className="formItem">
+      <Form.Item
+        name={["user", "Avatar"]}
+        value="hola"
+        label="Avatar"
+        className="formItem"
+      >
         <AvatarUpdate />
       </Form.Item>
 
       <Form.Item name={["user", "name"]} label="Username" className="formItem">
-        <Input placeholder="annabecj903" />
+        <Input placeholder={user.username} />
       </Form.Item>
       <Form.Item name={["user", "phone"]} className="formItem" label="Phone">
-        <Input placeholder="+1 493 3838" />
+        <Input placeholder={user.phonenumber} />
       </Form.Item>
 
       <Form.Item
@@ -68,7 +88,7 @@ export default function FormEditEnginner() {
           },
         ]}
       >
-        <Input placeholder="annabecj903@gmail.com" />
+        <Input placeholder={user.email} />
       </Form.Item>
 
       <Form.Item
@@ -76,7 +96,7 @@ export default function FormEditEnginner() {
         className="formItem"
         label="City | Country"
       >
-        <Input placeholder="Lima | Peru" />
+        <Input placeholder={user.country} />
       </Form.Item>
       <div className="updates">
         <Form.Item label="CV" className="formItem">

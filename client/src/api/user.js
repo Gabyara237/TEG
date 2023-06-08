@@ -25,7 +25,7 @@ export class User {
   async getUser(accessToken, idUser) {
     try {
       const url = `${this.baseApi}/${ENV.API_ROUTES.ENGINEER}/${idUser}`;
-      console.log(url);
+
       const params = {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -85,6 +85,36 @@ export class User {
         },
       };
       const response = await fetch(url, params);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateUser(accessToken, idUser, userData) {
+    try {
+      const data = userData;
+      if (!data.password) {
+        delete data.password;
+      }
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+      const url = `${ENV.BASE_API}/${ENV.API_ROUTES.USER}/${idUser}`;
+      const params = {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      };
+
+      const response = await fetch(url, params);
+
       const result = await response.json();
 
       if (response.status !== 200) throw result;
