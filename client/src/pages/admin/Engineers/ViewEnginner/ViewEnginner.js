@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
-import React from "react";
 import "./ViewEnginner.scss";
 import { BasicRating } from "../../../../components/Engineers/ViewEngineer/Rating/Rating";
 import { ModalReview } from "../../../../components/Engineers/ViewEngineer/ModalReview";
@@ -15,15 +15,45 @@ import { ModalAssign } from "../../../../components/Engineers/ViewEngineer/Modal
 import { EnginnerSkills } from "../../../../components/Engineers/ViewEngineer/EnginnerSkills";
 import { Divider } from "antd";
 import CircleIcon from "@mui/icons-material/Circle";
-import { green } from "@mui/material/colors";
+import { green, red } from "@mui/material/colors";
 import StarsIcon from "@mui/icons-material/Stars";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 import { DocumentsEnginner } from "../../../../components/Engineers/ViewEngineer/DocumentsEnginner";
 import ArticleIcon from "@mui/icons-material/Article";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import { TicketsList } from "../../../../components/Engineers/TicketsList/TicketsList";
+import { User } from "../../../../api";
+import { useAuth } from "../../../../hooks";
+import { Loader } from "semantic-ui-react";
 
+const userController = new User();
 export function ViewEnginner() {
+  const [user, setUser] = useState(null);
+  const { accessToken } = useAuth();
+  const url = window.location.pathname;
+  const idUser = url.substring(22);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await userController.getUser(accessToken, idUser);
+        setUser(response);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+  if (!user) return <Loader active inline="centered" />;
+  let Active = " ";
+  let color = " ";
+  if (user.active) {
+    Active = "Active";
+    color = green[500];
+  } else {
+    Active = "Not active";
+    color = red[500];
+  }
+
   return (
     <div className="container">
       <div className="containerEngineerDetail">
@@ -32,14 +62,18 @@ export function ViewEnginner() {
             <div className="enginnerInformation">
               <Avatar className="avatarViewEnginner" />
               <div className="userShowTopTitle">
-                <span className="userShowUsername"> Enginner Name</span>
-                <span className="userShowUserTitle"> Enginner </span>
+                <span className="userShowUsername">
+                  {" "}
+                  {user.firstname} {user.lastname}{" "}
+                </span>
+                <span className="userShowUserTitle"> {user.role} </span>
                 <div className="availability">
                   <CircleIcon
-                    sx={{ color: green[500] }}
+                    sx={{ color: { color } }}
                     className="availabilityIcon"
                   />
-                  Active
+
+                  {Active}
                 </div>
               </div>
             </div>
@@ -48,12 +82,12 @@ export function ViewEnginner() {
                 <div className="userShowTitle">Account Details</div>
                 <div className="userShowInfo">
                   <PermIdentityIcon className="userShowIcon" />
-                  <span className="userShowInfoTitle">annabecj903</span>
+                  <span className="userShowInfoTitle">{user.username}</span>
                 </div>
 
                 <div className="userShowInfo">
                   <CalendarTodayRounded className="userShowIcon" />
-                  <span className="userShowInfoTitle">10/20/1992</span>
+                  <span className="userShowInfoTitle">{user.datebirth}</span>
                 </div>
               </div>
 
@@ -61,19 +95,19 @@ export function ViewEnginner() {
                 <div className="userShowTitle">Contact Details</div>
                 <div className="userShowInfo">
                   <PhoneAndroidRounded className="userShowIcon" />
-                  <span className="userShowInfoTitle">+1 493 3838</span>
+                  <span className="userShowInfoTitle">{user.phonenumber}</span>
                 </div>
 
                 <div className="userShowInfo">
                   <MailRounded className="userShowIcon" />
-                  <span className="userShowInfoTitle">
-                    annabecj903@gmail.com
-                  </span>
+                  <span className="userShowInfoTitle">{user.email}</span>
                 </div>
 
                 <div className="userShowInfo">
                   <LocationOnRounded className="userShowIcon" />
-                  <span className="userShowInfoTitle">Lima | Peru</span>
+                  <span className="userShowInfoTitle">
+                    {user.city}| {user.country}
+                  </span>
                 </div>
               </div>
 
@@ -82,13 +116,15 @@ export function ViewEnginner() {
                 <div className="userShowInfo">
                   <StarsIcon className="userShowIcon" />
                   <span className="userShowInfoTitle">
-                    Specialized in: Technical Support
+                    Specialized in: {user.specialized}
                   </span>
                 </div>
 
                 <div className="userShowInfo">
                   <RecordVoiceOverIcon className="userShowIcon" />
-                  <span className="userShowInfoTitle">English: Advanced</span>
+                  <span className="userShowInfoTitle">
+                    English: {user.englishlevel}
+                  </span>
                 </div>
               </div>
             </div>

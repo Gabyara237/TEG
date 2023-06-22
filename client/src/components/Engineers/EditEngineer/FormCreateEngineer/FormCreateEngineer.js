@@ -81,7 +81,7 @@ export function FormCreateEngineer(props) {
               label="Date of birth"
               className="formItem"
             >
-              <DatePicker />
+              <DatePicker format="MM-DD-YYYY" />
             </Form.Item>
           </div>
         </div>
@@ -114,11 +114,11 @@ export function FormCreateEngineer(props) {
             className="formItem2"
             label="Country"
           >
-            <Input placeholder="annabecj903@gmail.com" />
+            <Input placeholder="Peru" />
           </Form.Item>
 
           <Form.Item name={["user", "city"]} className="formItem2" label="City">
-            <Input placeholder="Lima | Peru" />
+            <Input placeholder="Lima " />
           </Form.Item>
         </div>
         <Form.Item

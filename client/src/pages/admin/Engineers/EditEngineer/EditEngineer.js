@@ -1,6 +1,8 @@
 import { Avatar } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import { green, red } from "@mui/material/colors";
+import CircleIcon from "@mui/icons-material/Circle";
 import "./EditEngineer.scss";
 import {
   CalendarTodayRounded,
@@ -35,6 +37,16 @@ export function EditEngineer() {
     })();
   }, []);
   if (!user) return <Loader active inline="centered" />;
+  let Active = " ";
+  let color = " ";
+  if (user.active) {
+    Active = "Active";
+    color = green[500];
+  } else {
+    Active = "Not active";
+    color = red[500];
+  }
+
   return (
     <div>
       <Pasos />
@@ -50,6 +62,14 @@ export function EditEngineer() {
             </div>
           </div>
           <div className="userShowBottom">
+            <div className="availability">
+              <CircleIcon
+                sx={{ color: { color } }}
+                className="availabilityIcon"
+              />
+
+              {Active}
+            </div>
             <div className="userShowTitle">Account Details</div>
             <div className="userShowInfo">
               <PermIdentityIcon className="userShowIcon" />

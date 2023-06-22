@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Switch } from "antd";
 import "./FormEditEnginner.scss";
 import { FileUpdate } from "../FileUpdate";
 import { AvatarUpdate } from "../AvatarUpdate";
@@ -44,8 +44,16 @@ export default function FormEditEnginner(props) {
 
   const onFinish = (values) => {
     userController.updateUser(accessToken, user._id, values.user);
-    onReload();
+    console.log(values.user);
   };
+  const switchh = () => {
+    if (user.active) {
+      return <Switch defaultChecked />;
+    } else {
+      return <Switch />;
+    }
+  };
+
   return (
     <Form
       {...layout}
@@ -71,10 +79,25 @@ export default function FormEditEnginner(props) {
         <AvatarUpdate />
       </Form.Item>
 
-      <Form.Item name={["user", "name"]} label="Username" className="formItem">
+      <Form.Item
+        name={["user", "active"]}
+        label="Active"
+        valuePropName="checked"
+      >
+        {switchh()}
+      </Form.Item>
+      <Form.Item
+        name={["user", "username"]}
+        label="Username"
+        className="formItem"
+      >
         <Input placeholder={user.username} />
       </Form.Item>
-      <Form.Item name={["user", "phone"]} className="formItem" label="Phone">
+      <Form.Item
+        name={["user", "phonenumber"]}
+        className="formItem"
+        label="Phone"
+      >
         <Input placeholder={user.phonenumber} />
       </Form.Item>
 
@@ -92,34 +115,18 @@ export default function FormEditEnginner(props) {
       </Form.Item>
 
       <Form.Item
-        name={["user", "cityCountry"]}
+        name={["user", "country"]}
         className="formItem"
-        label="City | Country"
+        label="Country"
       >
         <Input placeholder={user.country} />
       </Form.Item>
+
+      <Form.Item name={["user", "city"]} className="formItem" label="City">
+        <Input placeholder={user.city} />
+      </Form.Item>
       <div className="updates">
         <Form.Item label="CV" className="formItem">
-          <FileUpdate />
-        </Form.Item>
-
-        <Form.Item
-          name={["user", "NationalID"]}
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-          label="National ID"
-          className="formItem"
-        >
-          <FileUpdate />
-        </Form.Item>
-        <Form.Item label="Certifications" className="formItem">
-          <FileUpdate />
-        </Form.Item>
-
-        <Form.Item label="Insurance" className="formItem">
-          <FileUpdate />
-        </Form.Item>
-        <Form.Item label="Work authorization" className="formItem">
           <FileUpdate />
         </Form.Item>
       </div>

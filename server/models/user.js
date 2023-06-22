@@ -11,6 +11,8 @@ const UserSchema = mongoose.Schema({
     unique: true,
   },
   phonenumber: String,
+  specialized: String,
+  englishlevel: String,
   country: String,
   city: String,
   password: String,

@@ -36,7 +36,11 @@ export function Engineers() {
         <h3 className="summaryCountriesTitle"> New engineers </h3>
       </div>
 
-      <EngineersList reload={reload} />
+      <EngineersList
+        reload={reload}
+        close={onOpenCloseModal}
+        onReload={onReload}
+      />
     </div>
   );
 }

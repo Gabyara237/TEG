@@ -8,7 +8,7 @@ import { Loader } from "semantic-ui-react";
 const userController = new User();
 
 export function EngineersList(props) {
-  const { reload } = props;
+  const { reload, close, onReload } = props;
   const [users, setUsers] = useState(null);
   const { accessToken } = useAuth();
 
@@ -24,5 +24,5 @@ export function EngineersList(props) {
   }, [reload]);
 
   if (!users) return <Loader active inline="centered" />;
-  return <EngineerL users={users} />;
+  return <EngineerL users={users} onReload={onReload} />;
 }

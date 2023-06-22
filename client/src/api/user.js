@@ -52,7 +52,7 @@ export class User {
 
       formData.append("balance", 0);
       formData.append("active", true);
-      formData.append("role", "technician");
+      formData.append("role", "Technician");
       formData.append("password", 100);
 
       const url = `${this.baseApi}/${ENV.API_ROUTES.USER}`;
@@ -118,6 +118,26 @@ export class User {
       const result = await response.json();
 
       if (response.status !== 200) throw result;
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteUser(accessToken, idUser) {
+    try {
+      const url = `${this.baseApi}/${ENV.API_ROUTES.USER}/${idUser}`;
+      const params = {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const response = await fetch(url, params);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
       return result;
     } catch (error) {
       throw error;

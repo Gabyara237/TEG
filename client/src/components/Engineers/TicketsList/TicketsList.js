@@ -1,6 +1,6 @@
 import React from "react";
 import "./TicketsList.scss";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Avatar, Tooltip } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Link } from "react-router-dom";
@@ -131,6 +131,9 @@ export function TicketsList() {
         rows={rows}
         disableSelectionOnClick
         columns={columns}
+        slots={{
+          toolbar: GridToolbar,
+        }}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
