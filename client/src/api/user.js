@@ -43,7 +43,7 @@ export class User {
     }
   }
 
-  async createUser(accessToken, data) {
+  async createUser(accessToken, data, role) {
     try {
       const formData = new FormData();
       Object.keys(data).forEach((key) => {
@@ -52,7 +52,7 @@ export class User {
 
       formData.append("balance", 0);
       formData.append("active", true);
-      formData.append("role", "Technician");
+      formData.append("role", role);
       formData.append("password", 100);
 
       const url = `${this.baseApi}/${ENV.API_ROUTES.USER}`;
@@ -76,9 +76,9 @@ export class User {
     }
   }
 
-  async getEngineers(accessToken) {
+  async getEngineers(accessToken, role = undefined) {
     try {
-      const url = `${this.baseApi}/${ENV.API_ROUTES.USERS}`;
+      const url = `${this.baseApi}/${ENV.API_ROUTES.USERS}?role=${role}`;
       const params = {
         headers: {
           Authorization: `Bearer ${accessToken}`,

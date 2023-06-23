@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, Form, Input, DatePicker } from "antd";
-import { User } from "../../../../api";
-import { useAuth } from "../../../../hooks";
-import { AvatarUpdate } from "../AvatarUpdate";
+import { User } from "../../../api";
+import { useAuth } from "../../../hooks";
+import { AvatarUpdate } from "../../Engineers/EditEngineer/AvatarUpdate";
 
 const userController = new User();
 
-export function FormCreateEngineer(props) {
+export function FormCreateClient(props) {
   const { accessToken } = useAuth();
   const { close, onReload } = props;
 
@@ -26,7 +26,7 @@ export function FormCreateEngineer(props) {
   /* eslint-enable no-template-curly-in-string */
 
   const onFinish = (values) => {
-    userController.createUser(accessToken, values.user, "engineer");
+    userController.createUser(accessToken, values.user, "client");
 
     onReload();
     close();

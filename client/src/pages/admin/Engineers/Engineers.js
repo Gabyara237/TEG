@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BasicModal } from "../../../components/Shared";
 import { FeaturedInfo, EngineersList } from "../../../components/Engineers";
+import { List } from "../../../components/Shared/Lists";
 import { FormCreateEngineer } from "../../../components/Engineers/EditEngineer/FormCreateEngineer/FormCreateEngineer";
 import Button from "@mui/material/Button";
 import { Add } from "@mui/icons-material";
@@ -36,11 +37,7 @@ export function Engineers() {
         <h3 className="summaryCountriesTitle"> New engineers </h3>
       </div>
 
-      <EngineersList
-        reload={reload}
-        close={onOpenCloseModal}
-        onReload={onReload}
-      />
+      <List reload={reload} role="engineer" onReload={onReload} />
     </div>
   );
 }

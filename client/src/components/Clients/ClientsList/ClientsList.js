@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./EngineersList.scss";
+
 import {
   DataGrid,
   GridToolbarColumnsButton,
@@ -28,7 +28,7 @@ function CustomToolbar() {
   );
 }
 
-export function EngineerL(props) {
+export function ClientL(props) {
   const { accessToken } = useAuth();
   const { users, onReload } = props;
   const [open, setOpen] = useState(false);

@@ -28,12 +28,12 @@ async function getUser(req, res) {
 
 // Muestra todos los usuarios del sistema, y tambien los usuarios activos o no activos
 async function getUsers(req, res) {
-  const { active } = req.query;
+  const { role } = req.query;
   let response = null;
-  if (active === undefined) {
+  if (role === undefined) {
     response = await User.find(); //Me muestra todos los usuarios
   } else {
-    response = await User.find({ active }); // Regresa activos o inactivos
+    response = await User.find({ role }); // Regresa activos o inactivos
   }
   res.status(200).send(response);
 }
