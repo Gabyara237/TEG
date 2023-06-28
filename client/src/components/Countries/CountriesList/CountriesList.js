@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { green, red } from "@mui/material/colors";
+
 import {
   DataGrid,
   GridToolbarColumnsButton,
@@ -13,11 +13,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Link } from "react-router-dom";
 import { Popconfirm, message } from "antd/lib";
-import { User } from "../../../api";
+import { Country } from "../../../api";
 import { useAuth } from "../../../hooks";
-import CircleIcon from "@mui/icons-material/Circle";
 
-const userController = new User();
+const countryController = new Country();
 
 function CustomToolbar() {
   return (
@@ -29,9 +28,9 @@ function CustomToolbar() {
   );
 }
 
-export function ClientL(props) {
+export function CountriesL(props) {
   const { accessToken } = useAuth();
-  const { users, onReload } = props;
+  const { countries, onReload } = props;
   const [open, setOpen] = useState(false);
   let rowss = [];
 
@@ -52,7 +51,7 @@ export function ClientL(props) {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert variant="filled" severity="success">
-          Company successfully deleted!
+          Country successfully deleted!
         </Alert>
       </Snackbar>
     );
@@ -62,7 +61,7 @@ export function ClientL(props) {
     const confirm = async (e) => {
       console.log(e);
       try {
-        await userController.deleteUser(accessToken, id);
+        await countryController.deleteCountry(accessToken, id);
         onReload();
         handleOpen();
       } catch (error) {
@@ -79,20 +78,19 @@ export function ClientL(props) {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "user",
-      headerName: "Company",
+      field: "countryname",
+      headerName: "Name",
       width: 130,
       renderCell: (params) => {
         return (
           <div className="userListUser">
             <Avatar className="userListAvatar" />
-            {params.row.userName}
+            {params.row.countryname}
           </div>
         );
       },
     },
-    { field: "email", headerName: "Email", width: 150 },
-    { field: "phonee", headerName: "Phone", width: 130 },
+    { field: "services", headerName: "Services", width: 150 },
     {
       field: "status",
       headerName: "Status",
@@ -100,10 +98,6 @@ export function ClientL(props) {
       sortable: false,
       width: 130,
     },
-
-    { field: "country", headerName: "Country", width: 130 },
-
-    { field: "statecity", headerName: "State/City", width: 130 },
     {
       field: "action",
       headerName: "Action",
@@ -123,7 +117,7 @@ export function ClientL(props) {
             </Link>
             <Popconfirm
               title="Delete the enginner"
-              description="Are you sure to delete this company?"
+              description="Are you sure to delete this engineer?"
               onConfirm={deleteconfirm(params.row.id, accessToken)}
               onCancel={cancel}
               okText="Yes, delete"
@@ -138,22 +132,19 @@ export function ClientL(props) {
       },
     },
   ];
-
-  users.forEach((user) => {
+  console.log(countries);
+  countries.forEach((country) => {
     let rt = {
-      id: user._id,
-      userName: user.companyname,
-      email: user.email,
-      phonee: user.phonenumber,
-      status: "active",
-      country: user.country,
-      statecity: user.city,
+      id: country._id,
+      countryname: country.countryname,
+      services: country.services,
+      status: "ACTIVE",
     };
     rowss.push(rt);
   });
 
   console.log("este");
-  console.log(users);
+  console.log(countries);
   return (
     <div style={{ height: 450, width: "100%" }}>
       <DataGrid

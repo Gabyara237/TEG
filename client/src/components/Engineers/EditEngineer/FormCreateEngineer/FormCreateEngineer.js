@@ -3,6 +3,7 @@ import { Button, Form, Input, DatePicker } from "antd";
 import { User } from "../../../../api";
 import { useAuth } from "../../../../hooks";
 import { AvatarUpdate } from "../AvatarUpdate";
+import { useState } from "react";
 
 const userController = new User();
 
@@ -27,7 +28,6 @@ export function FormCreateEngineer(props) {
 
   const onFinish = (values) => {
     userController.createUser(accessToken, values.user, "engineer");
-
     onReload();
     close();
   };

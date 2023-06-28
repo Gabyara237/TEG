@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const CountrySchema = mongoose.Schema({
-  name: String,
+  countryname: String,
+  countryflag: String,
   active: Boolean,
   tickets: Number,
   services: String,

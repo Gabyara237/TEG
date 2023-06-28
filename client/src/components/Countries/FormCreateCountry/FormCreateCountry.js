@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
-import { User } from "../../../api";
+import { Country } from "../../../api";
 import { useAuth } from "../../../hooks";
 import { AvatarUpdate } from "../../Engineers/EditEngineer/AvatarUpdate";
 import { Alert, Snackbar } from "@mui/material";
 
-const userController = new User();
+const countryController = new Country();
 
-export function FormCreateClient(props) {
+export function FormCreateCountry(props) {
   const { close, onReload } = props;
   const { accessToken } = useAuth();
   const [open, setOpen] = useState(false);
@@ -41,13 +41,14 @@ export function FormCreateClient(props) {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert variant="filled" severity="success">
-          Company successfully deleted!
+          Country successfully deleted!
         </Alert>
       </Snackbar>
     );
   }
   const onFinish = (values) => {
-    userController.createUser(accessToken, values.user, "client");
+    countryController.createCountry(accessToken, values.country, "country");
+    console.log(values.country);
     onReload();
     close();
   };
@@ -67,7 +68,7 @@ export function FormCreateClient(props) {
         <div className="form_Create">
           <div className="groupItem">
             <Form.Item
-              name={["user", "companylogo"]}
+              name={["country", "countryflag"]}
               label="Logo"
               className="formItem"
             >
@@ -75,21 +76,21 @@ export function FormCreateClient(props) {
             </Form.Item>
             <div>
               <Form.Item
-                name={["user", "companyname"]}
-                label="Company Name"
+                name={["country", "countryname"]}
+                label="Country Name"
                 className="formItem"
               >
-                <Input placeholder="annabecj903" />
+                <Input placeholder="Peru" />
               </Form.Item>
               <Form.Item
-                name={["user", "lastname"]}
+                name={["country", "services"]}
                 label="Last Name - Contact"
                 className="formItem"
               >
                 <Input placeholder="annabecj903" />
               </Form.Item>
             </div>
-            <div>
+            {/* <div>
               <Form.Item
                 name={["user", "country"]}
                 className="formItem"
@@ -105,9 +106,9 @@ export function FormCreateClient(props) {
               >
                 <Input placeholder="Lima " />
               </Form.Item>
-            </div>
+            </div> */}
           </div>
-          Contact Details
+          {/* Contact Details
           <div className="groupItem">
             <Form.Item
               name={["user", "firstname"]}
@@ -145,7 +146,7 @@ export function FormCreateClient(props) {
             >
               <Input placeholder="+1 493 3838" />
             </Form.Item>
-          </div>
+          </div> */}
           <Form.Item
             wrapperCol={{
               ...layout.wrapperCol,
@@ -153,12 +154,12 @@ export function FormCreateClient(props) {
             className="ButtonSubmit"
           >
             <Button type="primary" htmlType="submit">
-              Create new company
+              Create new country
             </Button>
           </Form.Item>
         </div>
       </Form>
-      <MySnackbar />;
+      <MySnackbar />
     </>
   );
 }

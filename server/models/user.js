@@ -20,6 +20,7 @@ const UserSchema = mongoose.Schema({
   active: Boolean,
   avatar: String,
   state: String,
+  companylogo: String,
   companyname: String,
   balance: Number,
   expertise: String,

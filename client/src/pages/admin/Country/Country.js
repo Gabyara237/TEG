@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BasicModal } from "../../../components/Shared";
 import Button from "@mui/material/Button";
 import { Add } from "@mui/icons-material";
+import { FormCreateCountry } from "../../../components/Countries/FormCreateCountry";
+import { List } from "../../../components/Countries/CountriesList";
 
 export function Country() {
   const [showModal, setShowModal] = useState(false);
@@ -26,18 +28,14 @@ export function Country() {
         close={onOpenCloseModal}
         title="Create new Country"
       >
-        {/* <FormCreateEngineer close={onOpenCloseModal} onReload={onReload} /> */}
+        <FormCreateCountry close={onOpenCloseModal} onReload={onReload} />
       </BasicModal>
       {/* <FeaturedInfo /> */}
       <div>
         <h3 className="summaryCountriesTitle"> Countries</h3>
       </div>
 
-      {/* <EngineersList
-         reload={reload}
-         close={onOpenCloseModal}
-         onReload={onReload}
-       /> */}
+      <List reload={reload} role="engineer" onReload={onReload} />
     </div>
   );
 }

@@ -17,6 +17,8 @@ import {
   Clients,
   EditEngineer,
   ViewEnginner,
+  EditClient,
+  ViewCompany,
 } from "../pages/admin";
 import { useAuth } from "../hooks";
 
@@ -83,6 +85,14 @@ export function AdminRouter() {
           <Route
             path="/admin/clients"
             element={loadLayout(AdminLayout, Clients)}
+          />
+          <Route
+            path="/admin/clients/edit/:Id"
+            element={loadLayout(AdminLayout, EditClient)}
+          />
+          <Route
+            path="/admin/clients/view/:contactId"
+            element={loadLayout(AdminLayout, ViewCompany)}
           />
           <Route
             path="/admin/reports"

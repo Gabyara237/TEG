@@ -26,13 +26,13 @@ export function Clients() {
       <BasicModal
         show={showModal}
         close={onOpenCloseModal}
-        title="Create new Client"
+        title="Create new Company"
       >
         <FormCreateClient close={onOpenCloseModal} onReload={onReload} />
       </BasicModal>
       {/* <FeaturedInfo /> */}
       <div>
-        <h3 className="summaryCountriesTitle"> Clients</h3>
+        <h3 className="summaryCountriesTitle"> Companies</h3>
       </div>
 
       <List reload={reload} role="client" onReload={onReload} />
