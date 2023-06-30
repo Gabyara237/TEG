@@ -17,22 +17,16 @@ function createTicket(req, res) {
 
 //Obtener todos los tickets creados
 
-function getTickets(req, res) {
+async function getTickets(req, res) {
   //configuraciones para la paginacion de los tickets
-  const { page = 1, limit = 10 } = req.query;
-  const options = {
-    page: parseInt(page),
-    limit: parseInt(limit),
-    sort: { created_at: "desc" },
-  };
-
-  Ticket.paginate({}, options, (error, ticketsStored) => {
-    if (error) {
-      res.status(400).send({ msg: "Error al obtener los tickets" });
-    } else {
-      res.status(200).send(ticketsStored);
-    }
-  });
+  const { role } = req.query;
+  let response = null;
+  if (role === undefined) {
+    response = await Ticket.find(); //Me muestra todos los usuarios
+  } else {
+    response = await Ticket.find({ role }); // Regresa activos o inactivos
+  }
+  res.status(200).send(response);
 }
 
 //Actualización de Ticket

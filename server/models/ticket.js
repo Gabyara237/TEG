@@ -5,7 +5,7 @@ const TicketSchema = mongoose.Schema({
   title: String,
   description: String,
   price: Number,
-  Active: Boolean,
+  active: Boolean,
   created_at: Date,
   date: Date,
   status: String,
@@ -13,7 +13,7 @@ const TicketSchema = mongoose.Schema({
   published: Boolean,
   ownerTicket: String,
   serviceProvider: String,
+  priority: String,
 });
 
-TicketSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model("Ticket", TicketSchema);

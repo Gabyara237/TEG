@@ -13,6 +13,8 @@ export const ENV = {
     USERS: "users",
     COUNTRY: "country",
     COUNTRIES: "countries",
+    TICKET: "ticket",
+    TICKETS: "tickets",
   },
   JWT: {
     ACCESS: "access",
