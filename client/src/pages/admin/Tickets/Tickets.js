@@ -26,7 +26,7 @@ export function Tickets() {
       <BasicModal
         show={showModal}
         close={onOpenCloseModal}
-        title="Create new Ticket"
+        title="Open new Ticket"
       >
         <FormCreateTicket close={onOpenCloseModal} onReload={onReload} />
       </BasicModal>

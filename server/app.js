@@ -13,6 +13,7 @@ const userRoutes = require("./router/user");
 const ticketRoutes = require("./router/ticket");
 const countryRoutes = require("./router/country");
 const newsletterRoutes = require("./router/newsletter");
+const serviceRoute = require("./router/service");
 
 // Configure Body Parse
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,5 +32,6 @@ app.use(`/api/${API_VERSION}`, userRoutes);
 app.use(`/api/${API_VERSION}`, ticketRoutes);
 app.use(`/api/${API_VERSION}`, countryRoutes);
 app.use(`/api/${API_VERSION}`, newsletterRoutes);
+app.use(`/api/${API_VERSION}`, serviceRoute);
 
 module.exports = app;

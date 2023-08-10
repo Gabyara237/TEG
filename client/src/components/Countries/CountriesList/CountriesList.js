@@ -79,7 +79,7 @@ export function CountriesL(props) {
     { field: "id", headerName: "ID", width: 90 },
     {
       field: "countryname",
-      headerName: "Name",
+      headerName: "Country name",
       width: 130,
       renderCell: (params) => {
         return (

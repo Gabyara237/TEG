@@ -6,6 +6,9 @@ export class Ticket {
   async createTicket(accessToken, data, role) {
     try {
       const url = `${this.baseApi}/${ENV.API_ROUTES.TICKET}`;
+      data.status = "open";
+      data.responsible = "To be assigned";
+
       const params = {
         method: "POST",
         headers: {
@@ -38,6 +41,8 @@ export class Ticket {
 
       if (response.status !== 200) throw result;
       console.log(result);
+      result.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
       return result;
     } catch (error) {
       throw error;

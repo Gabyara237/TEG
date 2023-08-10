@@ -1,19 +1,21 @@
 const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate");
 
 const TicketSchema = mongoose.Schema({
   title: String,
   description: String,
+  priority: String,
   price: Number,
   active: Boolean,
   created_at: Date,
   date: Date,
   status: String,
+  country: String,
+  state: String,
   location: String,
   published: Boolean,
+  responsible: String,
   ownerTicket: String,
-  serviceProvider: String,
-  priority: String,
+  category: String,
 });
 
 module.exports = mongoose.model("Ticket", TicketSchema);

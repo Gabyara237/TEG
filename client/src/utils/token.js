@@ -9,3 +9,19 @@ export const hasExpiredToken = (token) => {
   }
   return false;
 };
+
+export const monitorTokenExpiration = (
+  token,
+  warningTime,
+  expiryWarningCallback
+) => {
+  const { exp } = jwtDecode(token);
+  const currentTime = new Date().getTime();
+  const timeUntilExpiry = exp - currentTime;
+
+  if (timeUntilExpiry <= warningTime) {
+    expiryWarningCallback();
+  } else {
+    setTimeout(expiryWarningCallback, timeUntilExpiry - warningTime);
+  }
+};
